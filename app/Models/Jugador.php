@@ -16,8 +16,8 @@ class Jugador extends Model
     public $incrementing = false;
     public $timestamps = false;
 
-    public function equipo(): BelongsTo
+    public function equipos(): BelongsTo
     {
-        return $this->belongsTo(Equipo::class, 'equipo_id');
+        return $this->belongsTo(Equipo::class,'equipo_id');
     }
 }

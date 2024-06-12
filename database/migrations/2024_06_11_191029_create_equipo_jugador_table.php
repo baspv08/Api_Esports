@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('equipo_partido', function (Blueprint $table) {
+        Schema::create('equipo_jugador', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('equipo_id');
-            $table->unsignedBigInteger('partido_id');
-            $table->primary(['equipo_id', 'partido_id']);
-            $table->boolean('ganador');
-
-            $table->foreign('equipo_id')->references('id')->on('equipos');
-            $table->foreign('partido_id')->references('id')->on('partidos');
+            $table->string('jugador_rut');
+            
+            $table->foreign('equipo_id')->references('id')->on('equipos')->onDelete('cascade');
+            $table->foreign('jugador_rut')->references('rut')->on('jugadores')->onDelete('cascade');
         });
     }
 
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('equipo_partido');
+        Schema::dropIfExists('equipo_jugador');
     }
 };

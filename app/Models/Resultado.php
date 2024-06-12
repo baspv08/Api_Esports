@@ -13,12 +13,18 @@ class Resultado extends Model
     protected $table = "resultados";
     public $timestamps = false;
 
-    public function partidos(): BelongsToMany
+    public function partidos()
     {
-        return $this->BelongsToMany(Partido::class,'partido_id');
+        return $this->belongsTo(Partido::class, 'partido_id');
     }
-    public function equipos(): BelongsToMany
+
+    public function equipoGanador()
     {
-        return $this->BelongsToMany(Equipo::class,'equipo_id');
+        return $this->belongsTo(Equipo::class, 'equipo_ganador_id');
+    }
+
+    public function equipoPerdedor()
+    {
+        return $this->belongsTo(Equipo::class, 'equipo_perdedor_id');
     }
 }

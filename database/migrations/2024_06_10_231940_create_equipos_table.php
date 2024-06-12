@@ -15,11 +15,12 @@ return new class extends Migration
     {
         Schema::create('equipos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre',30);
+            $table->string('nombre', 30);
             $table->string('juegos');
             $table->unsignedBigInteger('campeonato_id');
+            
             $table->foreign('campeonato_id')->references('id')->on('campeonatos');
-            //$table->timestamps();
+            // $table->timestamps();
         });
     }
 

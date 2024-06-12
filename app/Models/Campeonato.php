@@ -13,4 +13,12 @@ class Campeonato extends Model
     use HasFactory;
     protected $table = 'campeonatos';
     public $timestamps = false;
+
+    protected $fillable = [
+        'nombre',
+        'fecha_inicio',
+        'fecha_termino',
+        'reglas',
+        'premios',
+    ];
 }

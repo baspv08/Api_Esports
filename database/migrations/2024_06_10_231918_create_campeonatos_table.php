@@ -20,7 +20,8 @@ return new class extends Migration
             $table->date('fecha_termino');
             $table->text('reglas')->nullable();
             $table->text('premios')->nullable();
-            $table->timestamps();
+            // $table->timestamps();
+
         });
     }
 

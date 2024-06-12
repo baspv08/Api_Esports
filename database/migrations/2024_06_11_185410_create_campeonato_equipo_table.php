@@ -13,15 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('partidos', function (Blueprint $table) {
-            $table->id();
-            $table->dateTime('fecha');
-            $table->string('lugar');
+        Schema::create('campeonato_equipo', function (Blueprint $table) {
             $table->unsignedBigInteger('campeonato_id');
+            $table->unsignedBigInteger('equipo_id');
+            $table->primary(['campeonato_id', 'equipo_id']);
+
+            $table->foreign('campeonato_id')->references('id')->on('campeonatos')->onDelete('cascade');
+            $table->foreign('equipo_id')->references('id')->on('equipos')->onDelete('cascade');
             
-            $table->foreign('campeonato_id')->references('id')->on('campeonatos');
-            $table->foreignId('equipo_local_id')->constrained('equipos')->onDelete('cascade');
-            $table->foreignId('equipo_visitante_id')->constrained('equipos')->onDelete('cascade');
             //$table->timestamps();
         });
     }
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('partidos');
+        Schema::dropIfExists('campeonato_equipo');
     }
 };
